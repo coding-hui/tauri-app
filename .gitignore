@@ -1,3 +1,10 @@
 /dist/
 /target/
 /Cargo.lock
+
+# editor and IDE paraphernalia
+.idea
+.vscode
+*.swp
+*.swo
+*~
