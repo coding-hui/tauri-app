@@ -42,7 +42,9 @@ jobs:
         # You may pin to the exact commit or the version.
         # uses: jetli/trunk-action@69821d4eec12c308c4b811e459e37556cf920057
         uses: jetli/trunk-action@v0.5.0
-          
+        with:
+          # Optional version of trunk to install(eg. 'v0.19.1', 'latest')
+          version: 'latest'
       - name: install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-22.04' # This must match the platform value defined above.
         run: |
