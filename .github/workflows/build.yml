@@ -38,9 +38,10 @@ jobs:
           # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
           targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
       
-      - name: install dependencies
-        run: |
-          cargo binstall trunk
+      - name: trunk-action
+        # You may pin to the exact commit or the version.
+        # uses: jetli/trunk-action@69821d4eec12c308c4b811e459e37556cf920057
+        uses: jetli/trunk-action@v0.5.0
           
       - name: install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-22.04' # This must match the platform value defined above.
@@ -52,7 +53,7 @@ jobs:
 
       - name: install frontend dependencies
         run: yarn install # change this to npm, pnpm or bun depending on which one you use.
-
+      
       # If tagName and releaseId are omitted tauri-action will only build the app and won't try to upload any assets.
       - uses: tauri-apps/tauri-action@v0
         env:
